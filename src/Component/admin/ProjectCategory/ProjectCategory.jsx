@@ -123,9 +123,9 @@ const ProjectCategory = (props) => {
     else {
       var temp = tableData
       for (var i = 0; i < temp.length; i++) {
-        if (temp[i].name === txt) {
+        if (temp[i].title === txt) {
           setParentId(temp[i].id)
-          setParentName(temp[i].name)
+          setParentName(temp[i].title)
         }
       }
     }
@@ -171,7 +171,7 @@ const ProjectCategory = (props) => {
                           <Input type="select" name="select" className="form-control digits" defaultValue="" onChange={(txt) => parentCategory(txt.target.value)}>
                             <option>{ }</option>
                             {tableData.map(item => {
-                              return <option>{item.name}</option>
+                              return <option>{item.title}</option>
                             })}
                           </Input>
                         </FormGroup>

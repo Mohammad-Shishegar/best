@@ -6,7 +6,7 @@ const siteSetting = async (title ,mailServe, email ,passwordEmail , metKey, metD
 
     const data = {
         title: title,
-        mailServe: mailServe,
+        mailServe : mailServe,
         email: email,
         passwordEmail: passwordEmail,
         metKey: metKey,
@@ -29,7 +29,7 @@ const siteSetting = async (title ,mailServe, email ,passwordEmail , metKey, metD
 const getSetting = async () => {
     const token = await localStorage.getItem("token")
     try{
-        const response = await axios.post(`${URL}${Version}/setting` ,
+        const response = await axios.get(`${URL}${Version}/setting` ,
         {
             headers: { 'Authorization': `Bearer ${token}` } 
         })

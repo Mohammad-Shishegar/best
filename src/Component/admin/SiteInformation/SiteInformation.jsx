@@ -26,7 +26,16 @@ const SiteInformation = () => {
     // check
     const getData = async () => {
         const response = await getSetting()
-        if (response.response.data.IsSuccess === false) {
+        console.log(response)
+        if(response.data.isSuccess === true){
+            setTitle(response.data.data.title)
+            setMailServe(response.data.data.mailServe)
+            setEmail(response.data.data.email)
+            setPasswordEmail(response.data.data.passwordEmail)
+            setMetDec(response.data.data.metDec)
+            setMetKey(response.data.data.metKey)
+        }
+        else if (response.response.data.IsSuccess === false) {
             toast.error("some thing went wrong...")
             setTimeout(() => {
                 localStorage.removeItem("token")
@@ -60,7 +69,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Title"}</Label>
                                                 <InputGroup>
-                                                    <Input className="form-control" onChange={(txt) => setTitle(txt.target.value)} />
+                                                    <Input className="form-control" value={title} onChange={(txt) => setTitle(txt.target.value)} />
                                                 </InputGroup>
                                             </FormGroup>
                                         </Col>
@@ -68,7 +77,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Mail Server"}</Label>
                                                 <InputGroup>
-                                                    <Input className="form-control" onChange={(txt) => setMailServe(txt.target.value)} />
+                                                    <Input className="form-control" value={mailServe} onChange={(txt) => setMailServe(txt.target.value)} />
                                                 </InputGroup>
                                             </FormGroup>
                                         </Col>
@@ -76,7 +85,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Email"}</Label>
                                                 <InputGroup>
-                                                    <Input draggable className="form-control" onChange={(txt) => {
+                                                    <Input className="form-control" value={email} onChange={(txt) => {
                                                         if ((/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/).test(txt.target.value))
                                                             setEmail(txt.target.value)
                                                         else
@@ -89,7 +98,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Emial Password"}</Label>
                                                 <InputGroup>
-                                                    <Input className="form-control" onChange={(txt) => setPasswordEmail(txt.target.value)} />
+                                                    <Input className="form-control" value={passwordEmail} onChange={(txt) => setPasswordEmail(txt.target.value)} />
                                                 </InputGroup>
                                             </FormGroup>
                                         </Col>
@@ -97,7 +106,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Met Key"}</Label>
                                                 <InputGroup>
-                                                    <Input className="form-control" onChange={(txt) => setMetKey(txt.target.value)} />
+                                                    <Input className="form-control" value={metKey} onChange={(txt) => setMetKey(txt.target.value)} />
                                                 </InputGroup>
                                             </FormGroup>
                                         </Col>
@@ -105,7 +114,7 @@ const SiteInformation = () => {
                                             <FormGroup >
                                                 <Label>{"Met Dec"}</Label>
                                                 <InputGroup>
-                                                    <Input className="form-control" onChange={(txt) => setMetDec(txt.target.value)} />
+                                                    <Input className="form-control" value={metDec} onChange={(txt) => setMetDec(txt.target.value)} />
                                                 </InputGroup>
                                             </FormGroup>
                                         </Col>
