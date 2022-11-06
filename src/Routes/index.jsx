@@ -50,13 +50,13 @@ const Routers = () => {
   return (
     <Fragment>
       <Auth0Provider domain={auth0.domain} clientId={auth0.clientId} redirectUri={auth0.redirectUri}>
-        <HashRouter basename={'/'}>
+        <BrowserRouter basename={'/'}>
           <>
             <Suspense fallback={<Loader />}>
               <Routes>
 
                 <Route element={<Layout />}>
-                  <Route path={Jwt_token ? `${process.env.PUBLIC_URL}/dashboard/default/` : ""} element={ Jwt_token ? <Default /> : <Navigate to={`${process.env.PUBLIC_URL}/pages/intro`} />} />
+                  <Route path={Jwt_token ? `${process.env.PUBLIC_URL}/dashboard` : ""} element={ Jwt_token ? <Default /> : <Navigate to={`${process.env.PUBLIC_URL}/home`} />} />
                 </Route>
 
 
@@ -65,20 +65,20 @@ const Routers = () => {
                     <>
 
                       <Route element={<Layout />}>
-                        <Route path={`${process.env.PUBLIC_URL}/dashboard/default/`} element={<Default />} />
+                        <Route path={`${process.env.PUBLIC_URL}/dashboard`} element={<Default />} />
                       </Route>
 
 
                       <Route path={`/*`} element={<LayoutRoutes />} />
                       <Route exact
                         path={`${process.env.PUBLIC_URL}`}
-                        element={<Navigate to={`${process.env.PUBLIC_URL}/pages/intro`} />}
+                        element={<Navigate to={`${process.env.PUBLIC_URL}/home`} />}
 
                       // element={<Navigate to={`${process.env.PUBLIC_URL}/pages/intro`} />}
                       />
                       <Route exact
                         path={`/`}
-                        element={<Navigate to={`${process.env.PUBLIC_URL}/pages/intro`} />}
+                        element={<Navigate to={`${process.env.PUBLIC_URL}/home`} />}
                       // element={<Navigate to={`${process.env.PUBLIC_URL}/pages/intro`} />}
                       />
                     </> : ""
@@ -115,7 +115,7 @@ const Routers = () => {
               </Routes>
             </Suspense>
           </>
-        </HashRouter>
+        </BrowserRouter>
       </Auth0Provider>
     </Fragment >
   );

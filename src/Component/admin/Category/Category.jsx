@@ -150,22 +150,7 @@ const Category = (props) => {
                           </InputGroup>
                         </FormGroup>
                       </Col>
-                      <Col sm="4">
-                        <FormGroup >
-                          <Label>{"Descrtiption"}</Label>
-                          <InputGroup>
-                            <Input className="form-control" placeholder='Descrtiption' type="textarea" value={description} onChange={(txt) => { setDescription(txt.target.value) }} />
-                          </InputGroup>
-                        </FormGroup>
-                      </Col>
-                      <Col sm="4" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <FormGroup className="form-group">
-                          <div className="checkbox">
-                            <Input id="checkbox1" type="checkbox" checked={active} onClick={() => setActive(!active)} />
-                            <Label className="text-muted" for="checkbox1">Active</Label>
-                          </div>
-                        </FormGroup>
-                      </Col>
+
                       <Col sm="4">
                         <FormGroup>
                           <Label htmlFor="exampleFormControlSelect9">{"Parent"}</Label>
@@ -175,6 +160,23 @@ const Category = (props) => {
                               return <option>{item.name}</option>
                             })}
                           </Input>
+                        </FormGroup>
+                      </Col>
+                      
+                      <Col sm="4" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <FormGroup className="form-group">
+                          <div className="checkbox">
+                            <Input id="checkbox1" type="checkbox" checked={active} onClick={() => setActive(!active)} />
+                            <Label className="text-muted" for="checkbox1">Active</Label>
+                          </div>
+                        </FormGroup>
+                      </Col>
+                      <Col sm="12">
+                        <FormGroup >
+                          <Label>{"Descrtiption"}</Label>
+                          <InputGroup>
+                            <Input className="form-control" placeholder='Descrtiption' type="textarea" value={description} onChange={(txt) => { setDescription(txt.target.value) }} />
+                          </InputGroup>
                         </FormGroup>
                       </Col>
                     </Row>

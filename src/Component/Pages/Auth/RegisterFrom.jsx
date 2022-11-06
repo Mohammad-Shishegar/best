@@ -44,8 +44,8 @@ const RegisterFrom = (props) => {
             await localStorage.setItem("token", tokenData.data.access_token)
             toast.success('You have successfully registered')
             setTimeout(() => {
-                // navigate(`${process.env.PUBLIC_URL}/dashboard/default/` , {replace:true})
-                window.location = "/"
+                navigate(`${process.env.PUBLIC_URL}/dashboard/` , {replace:true})
+                // window.location = "/"
             }, 2000)
         }
         else {

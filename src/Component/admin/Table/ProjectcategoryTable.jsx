@@ -13,7 +13,7 @@ const ProjectcategoryTable = (props) => {
       <Col sm="12">
         <Card>
           <CardHeader>
-            <H5>{"Category"}</H5>
+            <H5>{"Project Category"}</H5>
           </CardHeader>
           <div className="table-responsive">
             <Table>
@@ -33,8 +33,8 @@ const ProjectcategoryTable = (props) => {
                       {/* <th scope="row">{item.id}</th> */}
                       <td>{item.title}</td>
                       <td>{item.parentCategoryName+""}</td>
-                      <td>{<Button color="primary" onClick={()=>edit(item.id)}> <Edit/> </Button>}</td>
-                      <td>{<Button color="danger" onClick={()=>deleteCat(item.id)}> <Trash/> </Button>}</td>
+                      <td>{<Button color="primary" outline onClick={()=>edit(item.id)}> <Edit size={20}/> </Button>}</td>
+                      <td>{<Button color="danger" outline onClick={()=>deleteCat(item.id)}> <Trash size={20}/> </Button>}</td>
                     </tr>
                   )
                 }

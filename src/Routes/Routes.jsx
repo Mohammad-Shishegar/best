@@ -141,7 +141,7 @@ export const routes = [
     { path: `${process.env.PUBLIC_URL}/admin/UserList`, Component: <UserList /> },
     { path: `${process.env.PUBLIC_URL}/admin/ProjectCategory`, Component: <ProjectCategory/> },
     { path: `${process.env.PUBLIC_URL}/admin/SiteInformation`, Component: <SiteInformation/> },
-    { path: `${process.env.PUBLIC_URL}/dashboard/default/`, Component: <Default /> },
+    { path: `${process.env.PUBLIC_URL}/dashboard`, Component: <Default /> },
     { path: `${process.env.PUBLIC_URL}/dashboard/ecommerce/`, Component: <Ecommerce /> },
     { path: `${process.env.PUBLIC_URL}/dashboard/crypto/`, Component: <Crypto /> },
     

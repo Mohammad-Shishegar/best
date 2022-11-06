@@ -5,7 +5,7 @@ import { Card, CardBody, Col, Container, Row, Form, Label, FormGroup, Input, Inp
 import { Btn } from '../../../AbstractElements';
 import { createCategory, deleteCategory, getCategory, updateCategory } from '../../../api/Admin/ProjectCat';
 import { Add, Cancel, ClientName, EndingDate, EnterSomeDetails, Priority, ProjectRate, ProjectSize, ProjectTitle, ProjectType, StartingDate } from '../../../Constant';
-import CategoryTable from '../Table/ProjectcategoryTable';
+import ProjectcategoryTable from '../Table/ProjectcategoryTable';
 import { useEffect } from 'react';
 import {useNavigate} from "react-router-dom"
 
@@ -150,22 +150,6 @@ const ProjectCategory = (props) => {
                         </FormGroup>
                       </Col>
                       <Col sm="4">
-                        <FormGroup >
-                          <Label>{"Descrtiption"}</Label>
-                          <InputGroup>
-                            <Input className="form-control" placeholder='Descrtiption' type="textarea" value={description} onChange={(txt) => { setDescription(txt.target.value) }} />
-                          </InputGroup>
-                        </FormGroup>
-                      </Col>
-                      <Col sm="4" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                        <FormGroup className="form-group">
-                          <div className="checkbox">
-                            <Input id="checkbox1" type="checkbox" checked={active} onClick={() => setActive(!active)} />
-                            <Label className="text-muted" for="checkbox1">Active</Label>
-                          </div>
-                        </FormGroup>
-                      </Col>
-                      <Col sm="4">
                         <FormGroup>
                           <Label htmlFor="exampleFormControlSelect9">{"Parent"}</Label>
                           <Input type="select" name="select" className="form-control digits" defaultValue="" onChange={(txt) => parentCategory(txt.target.value)}>
@@ -174,6 +158,23 @@ const ProjectCategory = (props) => {
                               return <option>{item.title}</option>
                             })}
                           </Input>
+                        </FormGroup>
+                      </Col>
+                      
+                      <Col sm="4" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <FormGroup className="form-group">
+                          <div className="checkbox">
+                            <Input id="checkbox1" type="checkbox" checked={active} onClick={() => setActive(!active)} />
+                            <Label className="text-muted" for="checkbox1">Active</Label>
+                          </div>
+                        </FormGroup>
+                      </Col>
+                      <Col sm="12">
+                        <FormGroup >
+                          <Label>{"Descrtiption"}</Label>
+                          <InputGroup>
+                            <Input className="form-control" placeholder='Descrtiption' type="textarea" value={description} onChange={(txt) => { setDescription(txt.target.value) }} />
+                          </InputGroup>
                         </FormGroup>
                       </Col>
                     </Row>
@@ -195,7 +196,7 @@ const ProjectCategory = (props) => {
                     </Row>
                     <Row style={{ marginTop: "20px" }}>
                       {
-                        showTable ? <CategoryTable data={tableData} edit={editCategory} deleteCat={deleteCat} />
+                        showTable ? <ProjectcategoryTable data={tableData} edit={editCategory} deleteCat={deleteCat} />
                           : ""
                       }
                     </Row>

@@ -39,7 +39,7 @@ const LoginTab = ({ selected }) => {
                 await localStorage.setItem("login" , true)
                 toast.success('You have successfully login')
                 setTimeout(() => {
-                    navigate(`${process.env.PUBLIC_URL}/dashboard/default/` , {replace:true})
+                    navigate(`${process.env.PUBLIC_URL}/dashboard` , {replace:true})
                     // window.location = "/"
                 }, 2000)
             }

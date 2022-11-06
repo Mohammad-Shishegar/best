@@ -21,7 +21,7 @@ function FirstInroPage(props) {
   const CheckLogin = async (page) => {
     const token = await localStorage.getItem("token")
     if(token){
-       navigate(`${process.env.PUBLIC_URL}/dashboard/default/` , {replace:true})
+       navigate(`${process.env.PUBLIC_URL}/dashboard` , {replace:true})
     }
     else{
       if(page === "login"){

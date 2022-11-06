@@ -33,8 +33,8 @@ const CategoryTable = (props) => {
                       {/* <th scope="row">{item.id}</th> */}
                       <td>{item.name}</td>
                       <td>{item.parentCategoryName+""}</td>
-                      <td>{<Button color="primary" onClick={()=>edit(item.id)}> <Edit/> </Button>}</td>
-                      <td>{<Button color="danger" onClick={()=>deleteCat(item.id)}> <Trash/> </Button>}</td>
+                      <td>{<Button color="primary" outline size="sm" onClick={()=>edit(item.id)}> <Edit size={20}/> </Button>}</td>
+                      <td>{<Button color="danger" outline size="sm" onClick={()=>deleteCat(item.id)}> <Trash size={20}/> </Button>}</td>
                     </tr>
                   )
                 }

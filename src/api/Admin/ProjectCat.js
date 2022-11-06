@@ -43,11 +43,11 @@ const updateCategory = async (title , active , id ,  description , parentId , pa
     const token = await localStorage.getItem("token")
     const data = {
         title : title , 
-        activeOrder : active , 
         description:description ,
+        activeOrder : active , 
+        parentCategoryId : null , 
         id : id ,
-        parentCategoryId : parentId , 
-        parentCategoryName : parentName
+        // parentCategoryName : parentName
     }
     console.log(data)
     try{

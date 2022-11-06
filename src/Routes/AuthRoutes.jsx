@@ -26,7 +26,7 @@ import About from "../Pages/About/About"
 import PrivacyPolicy from "../Pages/PrivacyPolicy/PrivacyPolicy"
 
 export const authRoutes = [
-  { path: `${process.env.PUBLIC_URL}/pages/intro`, Component: <FirstIntroPage/> },
+  { path: `${process.env.PUBLIC_URL}/home`, Component: <FirstIntroPage/> },
   { path: `${process.env.PUBLIC_URL}/pages/Privacy-Policy`, Component:  <PrivacyPolicy/>  },
   { path: `${process.env.PUBLIC_URL}/pages/About`, Component: <About/> },
   { path: `${process.env.PUBLIC_URL}/pages/authentication/login`, Component: <Logins /> },
