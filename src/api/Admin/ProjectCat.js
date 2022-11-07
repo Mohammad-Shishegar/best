@@ -45,13 +45,12 @@ const updateCategory = async (title , active , id ,  description , parentId , pa
         title : title , 
         description:description ,
         activeOrder : active , 
-        parentCategoryId : null , 
-        id : id ,
+        parentCategoryId : parentId , 
+        id : 0 ,
         // parentCategoryName : parentName
     }
-    console.log(data)
     try{
-        const response = await axios.put(`${URL}${Version}/ProjectCategory` , data ,  {
+        const response = await axios.put(`${URL}${Version}/ProjectCategory?id=${id}` , data ,  {
             headers: { 'Authorization': `Bearer ${token}` } 
         })
         return response
@@ -80,5 +79,18 @@ const deleteCategory = async (id) => {
 
 }
 
+const categoryWithDetailes = async (id) => {
+    const token = await localStorage.getItem("token")
 
-export {getCategory , createCategory , updateCategory , deleteCategory}
+    try{
+        const response = await axios.get(`${URL}${Version}/ProjectCategory/GetByDetail?id=${id}` ,  {
+            headers: { 'Authorization': `Bearer ${token}` } 
+        })
+        return response
+    }
+    catch(er){
+        return er
+    }
+}
+
+export {getCategory , createCategory , updateCategory , deleteCategory , categoryWithDetailes}

@@ -3,11 +3,11 @@ import { toast } from 'react-toastify';
 import { useState } from 'react';
 import { Card, CardBody, Col, Container, Row, Form, Label, FormGroup, Input, InputGroup, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { Btn } from '../../../AbstractElements';
-import { createCategory, deleteCategory, getCategory, updateCategory } from '../../../api/Admin/ProjectCat';
+import { createCategory, deleteCategory, getCategory, updateCategory, categoryWithDetailes } from '../../../api/Admin/ProjectCat';
 import { Add, Cancel, ClientName, EndingDate, EnterSomeDetails, Priority, ProjectRate, ProjectSize, ProjectTitle, ProjectType, StartingDate } from '../../../Constant';
 import ProjectcategoryTable from '../Table/ProjectcategoryTable';
 import { useEffect } from 'react';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const ProjectCategory = (props) => {
 
@@ -22,7 +22,7 @@ const ProjectCategory = (props) => {
   const [btnMode, setBtnMode] = useState("add");
   const [id, setId] = useState()
 
-  const navigate = useNavigate() 
+  const navigate = useNavigate()
 
 
   const handleDiableBtn = () => {
@@ -60,7 +60,7 @@ const ProjectCategory = (props) => {
       setModal(!modal)
     }
 
-    if ( response.data.isSuccess && response.data.isSuccess === true) {
+    if (response.data.isSuccess && response.data.isSuccess === true) {
       toast.success("is Success")
       refreshTable()
       setActive(false)
@@ -86,14 +86,23 @@ const ProjectCategory = (props) => {
 
   const editCategory = async (id) => {
     var temp = tableData
-    for (var i = 0; i < temp.length; i++) {
-      if (temp[i].id === id) {
-        setTitle(temp[i].title)
-        setActive(temp[i].activeOrder)
-        setDescription("")
-        setId(temp[i].id)
-      }
-    }
+    // for (var i = 0; i < temp.length; i++) {
+    //   if (temp[i].id === id) {
+    //     setTitle(temp[i].title)
+    //     setActive(temp[i].activeOrder)
+    //     setDescription("")
+    //     setId(temp[i].id)
+    //   }
+    // }
+    const response = await categoryWithDetailes(id)
+    console.log(response.data.data)
+    var data = response.data.data
+    setTitle(data.title)
+    setActive(data.activeOrder)
+    setDescription(data.description)
+    setId(data.id)
+    setParentName(data.parentCategoryTitle)
+    setParentId(data.parentCategoryId)
     setBtnMode("update")
   }
 
@@ -106,10 +115,10 @@ const ProjectCategory = (props) => {
     else if (response.response.data.IsSuccess === false) {
       toast.error("some thing went wrong...")
       setTimeout(() => {
-          localStorage.removeItem("token")
-          navigate(`${process.env.PUBLIC_URL}/pages/intro`)
+        localStorage.removeItem("token")
+        navigate(`${process.env.PUBLIC_URL}/pages/intro`)
       }, 2000)
-  }
+    }
     else {
       toast.success("An error has occurred on the server")
     }
@@ -160,7 +169,7 @@ const ProjectCategory = (props) => {
                           </Input>
                         </FormGroup>
                       </Col>
-                      
+
                       <Col sm="4" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                         <FormGroup className="form-group">
                           <div className="checkbox">
