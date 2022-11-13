@@ -18,7 +18,7 @@ const ErrorPage1 = () => {
                             <Col md="8" className="offset-md-2">
                                 <H2>Sorry, something goes wrong</H2>
                                 <P attrPara={{ className: 'sub-content' }} >The page you are attempting to reach is currently not available. This may be because the page does not exist or has been moved.</P>
-                                <Link to={`${process.env.PUBLIC_URL}/pages/intro`}>
+                                <Link to={`${process.env.PUBLIC_URL}/home`}>
                                     <Btn attrBtn={{ className: 'btn-lg', color: 'primary' }}>{BACK_TO_HOME_PAGE}</Btn>
                                 </Link>
                             </Col>

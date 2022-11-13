@@ -23,10 +23,11 @@ const HeaderContain = () => {// eslint-disable-next-line
   const authenticated = JSON.parse(localStorage.getItem('authenticated'));
   const auth0_profile = JSON.parse(localStorage.getItem('auth0_profile'));
   const history = useNavigate();
-  const Logout = () => {
+  const Logout = async () => {
     // localStorage.removeItem('profileURL');
-    localStorage.removeItem('Name');
-    localStorage.removeItem('token');
+    await localStorage.removeItem('Name');
+    await localStorage.removeItem('token');
+    await localStorage.removeItem("manager")
     firebase_app.auth().signOut();
     history(`${process.env.PUBLIC_URL}/pages/authentication/login`);
     // localStorage.setItem('authenticated', false);

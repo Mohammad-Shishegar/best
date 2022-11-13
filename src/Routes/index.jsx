@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import Signin from '../Auth/Signin'
 import Default from '../Pages/DashBoard/Default/Default';
 import Layout from '../Layout/Layout';
+import Category from '../Component/admin/Category/Category';
 
 configureFakeBackend();
 const Routers = () => {
@@ -18,8 +19,9 @@ const Routers = () => {
   const [currentUser, setCurrentUser] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [login, setLogin] = useState();
+  const [manager , setManager] = useState(async ()=> await localStorage.getItem('manager'))
   // const jwt_token = localStorage.getItem('token')};
-
+  
   const [jwt_token, setJwt_token] = useState(async ()=> await localStorage.getItem('token'))
   const getToken = async () => {
      token = await localStorage.getItem('token')
@@ -47,7 +49,6 @@ const Routers = () => {
     };
   }, []);
 
-  //Mohammad
 
   return (
     <Fragment>

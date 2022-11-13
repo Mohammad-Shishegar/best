@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import SidebarIcon from './SidebarIcon';
 import SidebarLogo from './SidebarLogo';
 import SidebarMenu from './SidebarMenu';
-import { MENUITEMS } from './Menu';
+import { MENUITEMS , Menu } from './Menu';
 
 
 const SideBarLayout = (props) => {

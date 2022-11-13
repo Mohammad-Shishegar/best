@@ -33,14 +33,16 @@ const LoginTab = ({ selected }) => {
         setLoading(true)
         if (email != "" && password != "") {
             const tokenData = await getToken(email, password)
+            console.log(tokenData)
             if (tokenData !== "404") {
                 await localStorage.setItem("Name", tokenData.data.dispaly_name)
                 await localStorage.setItem("token", tokenData.data.access_token)
+                await localStorage.setItem("manager" , tokenData.data.manager)
                 await localStorage.setItem("login" , true)
                 toast.success('You have successfully login')
                 setTimeout(() => {
-                    navigate(`${process.env.PUBLIC_URL}/dashboard` , {replace:true})
-                    // window.location = "/"
+                    // navigate(`${process.env.PUBLIC_URL}/dashboard` , {replace:true} )
+                    window.location = "/dashboard"
                 }, 2000)
             }
             else
