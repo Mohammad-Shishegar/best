@@ -42,6 +42,7 @@ const RegisterFrom = (props) => {
             const tokenData = await getToken(userData.userName, userData.password)
             await localStorage.setItem("Name", response.data.data.fullName)
             await localStorage.setItem("token", tokenData.data.access_token)
+            await localStorage.setItem("manager" , tokenData.data.manager)
             toast.success('You have successfully registered')
             setTimeout(() => {
                 navigate(`${process.env.PUBLIC_URL}/dashboard/` , {replace:true})
