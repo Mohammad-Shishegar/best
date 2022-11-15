@@ -10,6 +10,8 @@ import { FaceBookSVG, GoogleSVG, InstagramSVG, TwitterSVG } from '../../../Data/
 import reagisterUser from "../../../api/Auth/Register"
 import getToken from "../../../api/Auth/GetToken"
 import { useNavigate } from "react-router-dom"
+import { useContext } from 'react';
+import { UserRoleContext } from '../../../Services/Context/UserRole/UserRole';
 
 const RegisterFrom = (props) => {
 
@@ -28,6 +30,8 @@ const RegisterFrom = (props) => {
 
     const [loading, setLoading] = useState(false)
 
+    const role = useContext(UserRoleContext)
+
     const registerUser = async () => {
         setDisableBtn(true)
         setLoading(true)
@@ -42,10 +46,14 @@ const RegisterFrom = (props) => {
             const tokenData = await getToken(userData.userName, userData.password)
             await localStorage.setItem("Name", response.data.data.fullName)
             await localStorage.setItem("token", tokenData.data.access_token)
-            await localStorage.setItem("manager" , tokenData.data.manager)
+            await localStorage.setItem("manager", tokenData.data.manager)
+            if (tokenData.data.manager === "true")
+                role.ChangeRole("admin")
+            else
+                role.ChangeRole("user")
             toast.success('You have successfully registered')
             setTimeout(() => {
-                navigate(`${process.env.PUBLIC_URL}/dashboard/` , {replace:true})
+                navigate(`${process.env.PUBLIC_URL}/dashboard/`, { replace: true })
                 // window.location = "/"
             }, 2000)
         }
@@ -115,13 +123,13 @@ const RegisterFrom = (props) => {
                 </FormGroup>
                 <FormGroup className="form-group">
                     <div className="checkbox">
-                        <Input id="checkbox1" type="checkbox" onClick={()=>setDisableBtn(!disableBtn)}/>
+                        <Input id="checkbox1" type="checkbox" onClick={() => setDisableBtn(!disableBtn)} />
                         <Label className="text-muted" for="checkbox1">Agree with <Link to={`${process.env.PUBLIC_URL}/pages/Privacy-Policy`}><span>{PrivacyPolicy}</span></Link> </Label>
                     </div>
                 </FormGroup>
                 <FormGroup>
                     <Btn attrBtn={{ disabled: disableBtn, className: 'btn-block', color: 'primary', onClick: () => { registerUser() } }}
-                    >{(loading) ? "Loading..." :  CreateAccount}</Btn>
+                    >{(loading) ? "Loading..." : CreateAccount}</Btn>
                 </FormGroup>
                 <P>Already have an account?
                     <Link to={`${process.env.PUBLIC_URL}/pages/authentication/login`} className="ms-2">

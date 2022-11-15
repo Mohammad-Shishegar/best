@@ -7,7 +7,7 @@ import {
     UiKitsSvg, UsersComponentSvg, WidgetsSvg, AdminUsersSvg
 } from '../../Data/svgIcons';
 
-var MENUITEMS
+var MENUITEMS = MENUITEMSUSER
 
 const MENUITEMSUSER = [
     // {
@@ -951,15 +951,15 @@ const MENUITEMSADMIN = [
     //    },
 ];
 
-const Menu = async () => {
-    var temp = await localStorage.getItem("manager")
+// const Menu = async () => {
+//     var temp = await localStorage.getItem("manager")
 
-    if (temp === "true")
-        MENUITEMS = MENUITEMSADMIN
-    else
-        MENUITEMS = MENUITEMSUSER
-}
+//     if (temp === "true")
+//         MENUITEMS = MENUITEMSADMIN
+//     else
+//         MENUITEMS = MENUITEMSUSER
+// }
 
-Menu()
+// Menu()
 
-export { Menu, MENUITEMS }
+export {  MENUITEMS , MENUITEMSADMIN , MENUITEMSUSER }

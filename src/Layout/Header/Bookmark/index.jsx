@@ -11,7 +11,7 @@ import { HeaderBookmarkSvg } from '../../../Data/svgIcons';
 
 const Bookmarks = () => {
     // eslint-disable-next-line
-    const [mainmenu, setMainMenu] = useState(MENUITEMS);
+    const [mainmenu, setMainMenu] = useState([]);
     const { setIsClose } = useContext(CustomContext);
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState(false);// eslint-disable-next-line

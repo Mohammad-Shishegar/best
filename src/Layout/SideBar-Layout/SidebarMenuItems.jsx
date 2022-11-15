@@ -1,12 +1,25 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext , useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { LI, UL } from '../../AbstractElements';
-import { MENUITEMS } from './Menu';
+import {  MENUITEMSADMIN  , MENUITEMSUSER} from './Menu';
 import { Label } from 'reactstrap';
 import { Back } from '../../Constant';
+import { UserRoleContext } from '../../Services/Context/UserRole/UserRole';
 
 const SidebarMenuItems = ({ setMainMenu, sidebartoogle, setNavActive }) => {
+
+  const role = useContext(UserRoleContext)
+    const [MENUITEMS, setMENUITEMS] = useState([])
+
+    useEffect(() => {
+        if (role.role === "user")
+            setMENUITEMS(MENUITEMSUSER)
+        else
+            setMENUITEMS(MENUITEMSADMIN)
+    }, [role.role])
+
+
   // eslint-disable-next-line
   const [active, setActive] = useState(false);
   const { t } = useTranslation();

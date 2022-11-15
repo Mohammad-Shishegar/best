@@ -1,13 +1,24 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useContext } from 'react';
 import SidebarIcon from './SidebarIcon';
 import SidebarLogo from './SidebarLogo';
 import SidebarMenu from './SidebarMenu';
-import { MENUITEMS , Menu } from './Menu';
+import { MENUITEMSADMIN, MENUITEMSUSER } from './Menu';
+import { UserRoleContext } from '../../Services/Context/UserRole/UserRole';
 
 
 const SideBarLayout = (props) => {
     const id = window.location.pathname.split('/').pop();
     const layout = id;
+
+    const role = useContext(UserRoleContext)
+    const [MENUITEMS, setMENUITEMS] = useState([])
+
+    useEffect(() => {
+        if (role.role === "user")
+            setMENUITEMS(MENUITEMSUSER)
+        else
+            setMENUITEMS(MENUITEMSADMIN)
+    }, [role.role])
 
     const [width, setWidth] = useState(0);
     const handleResize = () => {

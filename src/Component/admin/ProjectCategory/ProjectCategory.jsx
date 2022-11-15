@@ -95,7 +95,6 @@ const ProjectCategory = (props) => {
     //   }
     // }
     const response = await categoryWithDetailes(id)
-    console.log(response.data.data)
     var data = response.data.data
     setTitle(data.title)
     setActive(data.activeOrder)

@@ -41,7 +41,7 @@ const HeaderContain = () => {// eslint-disable-next-line
           </LI>
           <MoonLight />
           <ItemCart />
-          <Bookmark />
+          {/* <Bookmark /> */}
           <Notification />
           <MaxMiniSize />
           <LI attrLI={{ className: 'profile-nav onhover-dropdown pe-0 pt-0 me-0' }} >

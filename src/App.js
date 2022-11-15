@@ -23,6 +23,7 @@ import GoogleChartProvider from './_helper/GoogleChart/GoogleChartProvider';
 import FAQProvider from './_helper/Faq/FaqProvider';
 import AnimationThemeProvider from './_helper/AnimationTheme/AnimationThemeProvider';
 import CustomizerProvider from './_helper/customizer/CustomizerProvider';
+import { UserRole } from './Services/Context/UserRole/UserRole';
 
 function App() {
       return (
@@ -49,7 +50,9 @@ function App() {
                                                                                                                                     <ProductProvider>
                                                                                                                                           <ProjectProvider>
                                                                                                                                                 <AnimationThemeProvider>
-                                                                                                                                                      <Routers />
+                                                                                                                                                      <UserRole>
+                                                                                                                                                            <Routers />
+                                                                                                                                                      </UserRole>
                                                                                                                                                 </AnimationThemeProvider>
                                                                                                                                           </ProjectProvider>
                                                                                                                                     </ProductProvider>

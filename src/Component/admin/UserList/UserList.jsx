@@ -11,7 +11,6 @@ const UserList = () => {
 
     const getUser = async () => {
         const response = await Users()
-        console.log(response.data.data)
         if(response.data.statusCode !== "Success"){
             toast.error("Some thing went wrong...")
         }

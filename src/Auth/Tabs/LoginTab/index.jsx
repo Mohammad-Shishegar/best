@@ -11,6 +11,8 @@ import FormHeader from './FormHeader';
 import FormPassword from './FormPassword';
 import SignInWith from './SignInWith';
 import getToken from '../../../api/Auth/GetToken';
+import { useContext } from 'react';
+import { UserRoleContext } from '../../../Services/Context/UserRole/UserRole';
 
 
 const LoginTab = ({ selected }) => {
@@ -28,21 +30,27 @@ const LoginTab = ({ selected }) => {
         localStorage.getItem('Name')
     );
 
+    const role = useContext(UserRoleContext)
+
     const login = async () => {
         setDisableBtn(true)
         setLoading(true)
         if (email != "" && password != "") {
             const tokenData = await getToken(email, password)
-            console.log(tokenData)
             if (tokenData !== "404") {
                 await localStorage.setItem("Name", tokenData.data.dispaly_name)
                 await localStorage.setItem("token", tokenData.data.access_token)
-                await localStorage.setItem("manager" , tokenData.data.manager)
-                await localStorage.setItem("login" , true)
+                await localStorage.setItem("manager", tokenData.data.manager)
+                await localStorage.setItem("login", true)
+                if (tokenData.data.manager === "true")
+                    role.ChangeRole("admin")
+                else
+                    role.ChangeRole("user")
+
                 toast.success('You have successfully login')
                 setTimeout(() => {
-                    // navigate(`${process.env.PUBLIC_URL}/dashboard` , {replace:true} )
-                    window.location = "/dashboard"
+                    navigate(`${process.env.PUBLIC_URL}/dashboard`, { replace: true })
+                    // window.location = "/"
                 }, 2000)
             }
             else
