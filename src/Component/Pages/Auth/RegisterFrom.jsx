@@ -8,7 +8,7 @@ import { Btn, H4, H5, H6, LI, P, UL } from '../../../AbstractElements';
 import { CreateAccount, EmailAddress, Password, PrivacyPolicy, SignIn, YourName } from '../../../Constant';
 import { FaceBookSVG, GoogleSVG, InstagramSVG, TwitterSVG } from '../../../Data/svgIcons';
 import reagisterUser from "../../../api/Auth/Register"
-import getToken from "../../../api/Auth/GetToken"
+import {getToken} from "../../../api/Auth/GetToken"
 import { useNavigate } from "react-router-dom"
 import { useContext } from 'react';
 import { UserRoleContext } from '../../../Services/Context/UserRole/UserRole';
@@ -46,7 +46,6 @@ const RegisterFrom = (props) => {
             const tokenData = await getToken(userData.userName, userData.password)
             await localStorage.setItem("Name", response.data.data.fullName)
             await localStorage.setItem("token", tokenData.data.access_token)
-            await localStorage.setItem("manager", tokenData.data.manager)
             if (tokenData.data.manager === "true")
                 role.ChangeRole("admin")
             else

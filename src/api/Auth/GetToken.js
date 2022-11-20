@@ -19,4 +19,15 @@ const getToken = async (username , password) => {
     }
 }
 
-export default getToken
+const userRole = async () => {
+    const token = await localStorage.getItem("token")
+    try{
+        const response = await axios.get( `${URL}${Version}/Users/UserInfo`, 
+        { headers: { 'Authorization': `Bearer ${token}` }  })
+        return response
+    } catch(er){
+        return "404"
+    }
+}
+
+export {getToken , userRole}

@@ -5,6 +5,7 @@ import Breadcrumbs from '../../../CommonElements/Breadcrumbs';
 import DefaultContain from '../../../Component/DashBoard/Default/index';
 import { useNavigate } from "react-router-dom"
 import { UserRoleContext } from '../../../Services/Context/UserRole/UserRole';
+import { userRole } from '../../../api/Auth/GetToken';
 
 const Default = (props) => {
 
@@ -12,17 +13,14 @@ const Default = (props) => {
   const role = useContext(UserRoleContext)
 
   const checkUserKind = async () => {
-
-    const manager = await localStorage.getItem("manager")
-    if (manager === "true") {
+    const response = await userRole()
+    if (response.data.isManager === "true") {
       role.ChangeRole("admin")
       navigate(`${process.env.PUBLIC_URL}/admin/Category`, { replace: true })
     }
     else
       role.ChangeRole("user")
-
   }
-
   checkUserKind()
 
   return (
