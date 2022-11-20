@@ -42,6 +42,19 @@ const MENUITEMSUSER = [
             },
         ]
     },
+    {
+        menutitle: 'Project',
+        Items: [
+            {
+                title: 'Project', icon: HomeSvg, type: 'sub', badge: false, active: false, children: [
+                    { path: `${process.env.PUBLIC_URL}/project/create`, title: 'Create Project', type: 'link' },
+                    { path: `${process.env.PUBLIC_URL}/project/MyProject`, title: 'My Project', type: 'link' },
+                    // { path: `${process.env.PUBLIC_URL}/dashboard/crypto`, title: 'Crypto', type: 'link' },
+                ]
+            },
+        ]
+    },
+    
     // {
     //     menutitle: 'Widgets',
     //     Items: [
@@ -962,4 +975,4 @@ const MENUITEMSADMIN = [
 
 // Menu()
 
-export {  MENUITEMS , MENUITEMSADMIN , MENUITEMSUSER }
+export { MENUITEMS, MENUITEMSADMIN, MENUITEMSUSER }

@@ -4,15 +4,20 @@ import { routes } from './Routes';
 import {AdminRoutes} from "./AdminRotes"
 import Layout from '../Layout/Layout';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { UserRoleContext } from '../Services/Context/UserRole/UserRole';
 
 const LayoutRoutes = () => {
 
   const [manager, setManager] = useState(async () => localStorage.setItem("manager"))
 
+  const role = useContext(UserRoleContext)
+
+
   return (
     <Fragment>
       {
-        manager === "false" ? (
+        role.role === "user" ? (
           <Routes>
             {routes.map(({ path, Component }, i) => (
               <Route element={<Layout />} key={i}>

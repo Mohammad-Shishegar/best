@@ -135,15 +135,16 @@ import Category from '../Component/admin/Category/Category';
 import ProjectCategory from '../Component/admin/ProjectCategory/ProjectCategory';
 import SiteInformation from '../Component/admin/SiteInformation/SiteInformation';
 import UserList from '../Component/admin/UserList/UserList';
+import Project from '../Component/user/Project/Project';
+import MyProject from '../Component/user/MyProjects/MyProject';
 
 export const routes = [
-    { path: `${process.env.PUBLIC_URL}/admin/Category`, Component: <Category /> },
-    { path: `${process.env.PUBLIC_URL}/admin/UserList`, Component: <UserList /> },
-    { path: `${process.env.PUBLIC_URL}/admin/ProjectCategory`, Component: <ProjectCategory/> },
-    { path: `${process.env.PUBLIC_URL}/admin/SiteInformation`, Component: <SiteInformation/> },
     { path: `${process.env.PUBLIC_URL}/dashboard`, Component: <Default /> },
     { path: `${process.env.PUBLIC_URL}/dashboard/ecommerce/`, Component: <Ecommerce /> },
     { path: `${process.env.PUBLIC_URL}/dashboard/crypto/`, Component: <Crypto /> },
+    { path: `${process.env.PUBLIC_URL}/project/create`, Component: <Project /> },
+    { path: `${process.env.PUBLIC_URL}/project/update`, Component: <Project /> },
+    { path: `${process.env.PUBLIC_URL}/project/MyProject`, Component: <MyProject /> },
     
 
     { path: `${process.env.PUBLIC_URL}/widgets/general/`, Component: <General /> },
