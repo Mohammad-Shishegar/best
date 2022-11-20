@@ -9,7 +9,6 @@ import { UserRoleContext } from '../Services/Context/UserRole/UserRole';
 
 const LayoutRoutes = () => {
 
-  const [manager, setManager] = useState(async () => localStorage.setItem("manager"))
 
   const role = useContext(UserRoleContext)
 
