@@ -41,7 +41,7 @@ const LoginTab = ({ selected }) => {
                 await localStorage.setItem("Name", tokenData.data.dispaly_name)
                 await localStorage.setItem("token", tokenData.data.access_token)
                 await localStorage.setItem("login", true)
-                if (tokenData.data.manager === "true")
+                if (tokenData.data.manager === true)
                     role.ChangeRole("admin")
                 else
                     role.ChangeRole("user")

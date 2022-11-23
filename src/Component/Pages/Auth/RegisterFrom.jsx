@@ -46,13 +46,13 @@ const RegisterFrom = (props) => {
             const tokenData = await getToken(userData.userName, userData.password)
             await localStorage.setItem("Name", response.data.data.fullName)
             await localStorage.setItem("token", tokenData.data.access_token)
-            if (tokenData.data.manager === "true")
+            if (tokenData.data.manager === true)
                 role.ChangeRole("admin")
             else
                 role.ChangeRole("user")
             toast.success('You have successfully registered')
             setTimeout(() => {
-                navigate(`${process.env.PUBLIC_URL}/dashboard/`, { replace: true })
+                navigate(`${process.env.PUBLIC_URL}/project/MyProject`, { replace: true })
                 // window.location = "/"
             }, 2000)
         }

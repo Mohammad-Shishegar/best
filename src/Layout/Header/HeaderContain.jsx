@@ -36,13 +36,13 @@ const HeaderContain = () => {// eslint-disable-next-line
     <Fragment>
       <div className="nav-right col-10 col-sm-6 pull-right right-header p-0 dash-76">
         <UL attrUL={{ className: `simple-list flex-row nav-menus` }}>
-          <LI attrLI={{ className: 'onhover-dropdown' }}><H6 attrH6={{ className: 'txt-dark mb-0 mt-1' }}>EN</H6>
+          {/* <LI attrLI={{ className: 'onhover-dropdown' }}><H6 attrH6={{ className: 'txt-dark mb-0 mt-1' }}>EN</H6>
             <Language />
-          </LI>
+          </LI> */}
           <MoonLight />
-          <ItemCart />
+          {/* <ItemCart /> */}
           {/* <Bookmark /> */}
-          <Notification />
+          {/* <Notification /> */}
           <MaxMiniSize />
           <LI attrLI={{ className: 'profile-nav onhover-dropdown pe-0 pt-0 me-0' }} >
             <Media className="profile-media">

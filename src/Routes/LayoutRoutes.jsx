@@ -7,12 +7,12 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { UserRoleContext } from '../Services/Context/UserRole/UserRole';
 
-const LayoutRoutes = () => {
+const LayoutRoutes = (props) => {
 
 
   const role = useContext(UserRoleContext)
 
-
+ 
   return (
     <Fragment>
       {

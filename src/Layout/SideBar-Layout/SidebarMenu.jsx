@@ -50,7 +50,7 @@ const SidebarMenu = ({ setMainMenu, props, sidebartoogle, setNavActive, width })
               : { margin: '0px' }
           }>
           <SidebarMenuItems setMainMenu={setMainMenu} props={props} sidebartoogle={sidebartoogle} setNavActive={setNavActive} />
-          <SidebarSection />
+          {/* <SidebarSection /> */}
         </div>
         <div className={`right-arrow ${rightArrow ? 'd-none' : ''}`} onClick={scrollToRight}>
           <ArrowRight />

@@ -14,12 +14,16 @@ const Default = (props) => {
 
   const checkUserKind = async () => {
     const response = await userRole()
-    if (response.data.isManager === "true") {
+
+    if (response.data.isManager === true) {
       role.ChangeRole("admin")
       navigate(`${process.env.PUBLIC_URL}/admin/Category`, { replace: true })
     }
-    else
+    else {
+      navigate(`${process.env.PUBLIC_URL}/project/MyProject`, { replace: true })
       role.ChangeRole("user")
+
+    }
   }
   checkUserKind()
 

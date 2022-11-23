@@ -30,31 +30,31 @@ const MENUITEMSUSER = [
     //         },
     //     ]
     // },
-    {
-        menutitle: 'DashBoards',
-        Items: [
-            {
-                title: 'Dashboards', icon: HomeSvg, type: 'sub', badge: true, active: false, children: [
-                    { path: `${process.env.PUBLIC_URL}/dashboard/default`, title: 'Default', type: 'link' },
-                    { path: `${process.env.PUBLIC_URL}/dashboard/ecommerce`, title: 'Ecommerce', type: 'link' },
-                    { path: `${process.env.PUBLIC_URL}/dashboard/crypto`, title: 'Crypto', type: 'link' },
-                ]
-            },
-        ]
-    },
+    // {
+    //     menutitle: 'DashBoards',
+    //     Items: [
+    //         {
+    //             title: 'Dashboards', icon: HomeSvg, type: 'sub', badge: true, active: false, children: [
+    //                 { path: `${process.env.PUBLIC_URL}/dashboard/default`, title: 'Default', type: 'link' },
+    //                 { path: `${process.env.PUBLIC_URL}/dashboard/ecommerce`, title: 'Ecommerce', type: 'link' },
+    //                 { path: `${process.env.PUBLIC_URL}/dashboard/crypto`, title: 'Crypto', type: 'link' },
+    //             ]
+    //         },
+    //     ]
+    // },
     {
         menutitle: 'Project',
         Items: [
             {
                 title: 'Project', icon: HomeSvg, type: 'sub', badge: false, active: false, children: [
                     { path: `${process.env.PUBLIC_URL}/project/create`, title: 'Create Project', type: 'link' },
-                    { path: `${process.env.PUBLIC_URL}/project/MyProject`, title: 'My Project', type: 'link' },
+                    { path: `${process.env.PUBLIC_URL}/project/MyProject`, title: 'My Projects', type: 'link' },
                     // { path: `${process.env.PUBLIC_URL}/dashboard/crypto`, title: 'Crypto', type: 'link' },
                 ]
             },
         ]
     },
-    
+
     // {
     //     menutitle: 'Widgets',
     //     Items: [
@@ -509,7 +509,7 @@ const MENUITEMSADMIN = [
                     { path: `${process.env.PUBLIC_URL}/admin/ProjectCategory`, title: 'Project Category', type: 'link' },
                     { path: `${process.env.PUBLIC_URL}/admin/SiteInformation`, title: 'Site Information', type: 'link' },
                     { path: `${process.env.PUBLIC_URL}/admin/UserList`, title: 'User List', type: 'link' },
-                    // { path: `${process.env.PUBLIC_URL}/dashboard/crypto`, title: 'Crypto', type: 'link' },
+                    { path: `${process.env.PUBLIC_URL}/admin/ProjectList`, title: 'Projects List', type: 'link' },
                 ]
             },
         ]

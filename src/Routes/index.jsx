@@ -1,5 +1,5 @@
 import React, { Fragment, Suspense, useEffect, useState } from 'react';
-import { BrowserRouter, Navigate, Route, Routes, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, HashRouter , useLocation } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { firebase_app, auth0, Jwt_token } from '../Config/Config';
 import { configureFakeBackend, authHeader, handleResponse, } from '../Services/Fack.Backend';
@@ -12,6 +12,8 @@ import Signin from '../Auth/Signin'
 import Default from '../Pages/DashBoard/Default/Default';
 import Layout from '../Layout/Layout';
 import Category from '../Component/admin/Category/Category';
+import { useContext } from 'react';
+import { UserRoleContext } from '../Services/Context/UserRole/UserRole';
 
 configureFakeBackend();
 const Routers = () => {
@@ -19,16 +21,18 @@ const Routers = () => {
   const [currentUser, setCurrentUser] = useState(false);
   const [authenticated, setAuthenticated] = useState(false);
   const [login, setLogin] = useState();
-  const [manager , setManager] = useState(async ()=> await localStorage.getItem('manager'))
   // const jwt_token = localStorage.getItem('token')};
-  
-  const [jwt_token, setJwt_token] = useState(async ()=> await localStorage.getItem('token'))
+  const role = useContext(UserRoleContext)
+  role.checkUser()
+  const [jwt_token, setJwt_token] = useState(async () => await localStorage.getItem('token'))
   const getToken = async () => {
-     token = await localStorage.getItem('token')
+    token = await localStorage.getItem('token')
     var login = await localStorage.getItem('login')
     // setJwt_token(token)
     setLogin(login)
+
   }
+  
 
   getToken()
 
@@ -59,7 +63,7 @@ const Routers = () => {
               <Routes>
 
                 <Route element={<Layout />}>
-                  <Route path={Jwt_token ? `${process.env.PUBLIC_URL}/dashboard` : ""} element={ Jwt_token ? <Default /> : <Navigate to={`${process.env.PUBLIC_URL}/home`} />} />
+                  <Route path={Jwt_token ? `${process.env.PUBLIC_URL}/dashboard` : ""} element={Jwt_token ? <Default /> : <Navigate to={`${process.env.PUBLIC_URL}/home`} />} />
                 </Route>
 
 

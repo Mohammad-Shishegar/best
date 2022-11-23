@@ -1,11 +1,28 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment  , useContext , useEffect} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Col } from 'reactstrap';
 import { Btn, H2, P } from '../../../AbstractElements';
 import { BACK_TO_HOME_PAGE } from '../../../Constant';
 import { Error1 } from '../../../Data/svgIcons';
+import { useLocation } from 'react-router-dom';
+import { UserRoleContext } from '../../../Services/Context/UserRole/UserRole';
 
 const ErrorPage1 = () => {
+
+    const navigate = useNavigate()
+    
+
+    const role = useContext(UserRoleContext)
+
+    const checkAdmin = () => {
+        if (role.role === "admin")
+            navigate(`${process.env.PUBLIC_URL}/admin/Category`)
+    }
+
+    useEffect(()=>{
+        checkAdmin()
+    } , [role.role])
+
     return (
         <Fragment>
             <div className="page-wrapper" id="pageWrapper">
